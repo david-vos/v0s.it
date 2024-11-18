@@ -1,8 +1,12 @@
 let orbs = [];
 const g = 15;
+var canvas;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  canvas = createCanvas(windowWidth, windowHeight);
+  canvas.position(0, 0);
+  canvas.background(color(15,15,30));
+  canvas.style('z-index', '-1');
   frameRate(60)
   orbs.push(
     new Orb(
@@ -26,9 +30,14 @@ function setup() {
 }
 
 function draw() {
-  background(125);
+  canvas.background(color(15,15,30));
   update(); 
   orbs.forEach(orb => orb.display());
+}
+
+function windowResized() {
+  // TODO: move the positions of everything equal to the change of movement...
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 function update() {
@@ -54,8 +63,8 @@ class Orb {
     this.vel = vel;
     this.mass = mass;
     this.size = size;
-    this.isStatic = isStatic
-    this.orbit = []
+    this.isStatic = isStatic;
+    this.orbit = [];
   }
 
   update() {
@@ -67,13 +76,17 @@ class Orb {
   }
 
   display() {
-    fill(255, 150);
-    ellipse(this.pos.x, this.pos.y, this.size);
-    
-
+    if(this.isStatic) return
     for(let i = 0; i < this.orbit.length -1; i++) {
-      line(this.orbit[i].x, this.orbit[i].y, this.orbit[i+1].x, this.orbit[i+1].y)
+      fill(color(111,162,208));
+      stroke(color(111,162,208));
+      strokeWeight(3)
+      line(this.orbit[i].x, this.orbit[i].y, this.orbit[i+1].x, this.orbit[i+1].y);
     }
+    
+    fill(color(7,55,99));
+    stroke(color(77,117,154));
+    strokeWeight(2)
+    ellipse(this.pos.x, this.pos.y, this.size);
   }
 }
-
