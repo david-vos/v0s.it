@@ -15,7 +15,7 @@ main {
 
 .title {
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -23,12 +23,11 @@ main {
     z-index: 1;
 }
 
-
 .socials {
-    position: absolute;
+    position: fixed;
     top: 95%;
     left: 95%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-100%, -50%);
     font-size: 100%;
     text-align: center;
     color: white;
@@ -39,12 +38,11 @@ main {
     border-radius: 20px;
 }
 
-
 .projects {
-    position: absolute;
+    position: fixed;
     top: 95%;
     left: 5%;
-    transform: translate(-50%, -50%); 
+    transform: translate(0, -50%);
     font-size: 100%;
     text-align: center;
     color: white;
