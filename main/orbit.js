@@ -138,7 +138,6 @@ function displayGravPull() {
       gradJumps = 20
       orbcolorEnd = color(0, 255,2)
     }
-    
 
     for (let r = 1; r < maxSize; r += gradJumps) {
       let distance = r;

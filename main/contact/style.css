@@ -1,0 +1,73 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Doto', Arial, sans-serif;
+}
+
+main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 1;
+}
+
+.socials {
+    position: fixed;
+    top: 95%;
+    left: 95%;
+    transform: translate(-100%, -50%);
+    font-size: 100%;
+    text-align: center;
+    color: white;
+    z-index: 1;
+    background-color: rgba(0, 0, 3, 0.85);
+    padding: 1%;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 20px;
+}
+
+.projects {
+    position: fixed;
+    top: 95%;
+    left: 5%;
+    transform: translate(0, -50%);
+    font-size: 100%;
+    text-align: center;
+    color: white;
+    z-index: 1;
+    background-color: rgba(0, 0, 3, 0.85);
+    padding: 1%;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 20px;
+}
+
+.title .name {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.title .job {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+a {
+    all: unset;
+}
+
+a:hover {
+    cursor: grab;
+}
