@@ -13,16 +13,6 @@ main {
     height: 100%;
 }
 
-.title {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    z-index: 1;
-}
-
 .socials {
     position: fixed;
     top: 95%;
@@ -53,17 +43,6 @@ main {
     border-radius: 20px;
 }
 
-.title .name {
-    font-size: 5rem;
-    font-weight: bold;
-}
-
-.title .job {
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
-    font-style: italic;
-}
-
 a {
     all: unset;
 }
@@ -71,3 +50,140 @@ a {
 a:hover {
     cursor: grab;
 }
+
+.contact-info {
+    position: fixed;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 3, 0.85);
+    padding: 0.5rem 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.contact-info a {
+    color: #00c4ff;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.social-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 90%;
+    max-width: 900px;
+    flex-wrap: wrap;
+}
+
+.social-message {
+    flex: 3;
+    font-size: 1.2rem;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgba(0, 0, 3, 0.85);
+    opacity: 0.8;
+    padding: 1.5rem;
+    border-radius: 10px;
+    line-height: 1.6;
+    max-width: 600px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+.social-buttons {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.social-btn {
+    display: block; 
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 3, 0.85);
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box; }
+
+.social-btn:hover {
+    background-color: #00c4ff;    transform: scale(1.05); 
+    cursor: pointer;
+}
+
+.github {
+    background-color: #333;
+}
+
+.linkedin {
+    background-color: #0077b5;
+}
+
+.instagram {
+    background-color: #e4405f;
+}
+
+.discord {
+    background-color: #5865f2;
+}
+
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+    html, body {
+        overflow-y: auto; /* Enable scrolling for mobile view */
+    }
+
+    .social-section {
+        flex-direction: column; /* Stack the text and buttons vertically */
+        gap: 1rem; /* Reduce spacing for smaller screens */
+        align-items: center; /* Ensure proper centering */
+        padding: 2rem; /* Add padding for mobile layout */
+        width: 100%;
+          box-sizing: border-box;
+    }
+
+    .social-message, .social-buttons {
+        width: 100%; /* Make each section take the full width */
+    }
+
+    .social-buttons {
+        flex-direction: column; /* Ensure buttons remain vertical */
+    }
+
+    /* Adjust the contact-info for mobile */
+    .contact-info {
+       display: none; 
+    }
+
+    /* Ensure the content doesn't overlap the footer */
+    main {
+        padding-bottom: 100em; /* Adds space for the contact info footer */
+    }
+}
+

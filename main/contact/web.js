@@ -1,23 +1,23 @@
 let maxNodes 
 let nodes;
 let canvas;
-let bgColor;
+let c1, c2;
 
 function setup() {
-  colorMode(HSB, 360, 100, 100);
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0, 0);
   canvas.style('z-index', '-1');
-  bgColor = color(240, 50, 12);
-  canvas.background(bgColor);
   frameRate(60);
+
+  c1 = color(245, 77, 59);
+  c2 = color(184, 27, 186);
 
   maxNodes = width/25
   nodes = new Nodes()
 }
 
 function draw() {
-  canvas.background(bgColor);
+  gradientBG(0, 0, width, height, c1, c2);
   nodes.update()
 }
 
@@ -30,6 +30,17 @@ function windowResized() {
   }
 }
 
+function gradientBG(x, y, w, h, c1, c2) {
+  noFill();
+    // Top to bottom gradient
+    for (let i = y; i <= y + h; i++) {
+      let inter = map(i, y, y + h, 0, 1);
+      let c = lerpColor(c1, c2, inter);
+      stroke(c);
+      line(x, i, x + w, i); 
+  }
+}
+
 class Nodes {
   constructor() {
     this.pos = [];
@@ -37,7 +48,7 @@ class Nodes {
     this.distTo = [];
     for (let i = 0; i < maxNodes; i++) {
       this.pos.push(createVector(random(0, width), random(0, height)));
-      this.vel.push(createVector(random(-100, 100) / 30, random(-100, 100) / 30));
+      this.vel.push(createVector(random(-50, 50) / 250, random(-10, 10) / 250));
       this.distTo.push([]);
     }
   }
@@ -46,8 +57,8 @@ class Nodes {
     for (let i = 0; i < maxNodes; i++) {
       this.setWeb(i);
       this.moveNode(this.pos[i], this.vel[i]);
-      this.drawNode(this.pos[i]);
       this.drawWeb(i);
+    //  this.drawNode(this.pos[i]);
     }
   }
 
@@ -58,7 +69,7 @@ class Nodes {
   }
 
   drawNode(nodePos) {
-    fill(color(208.7, 92.93, 38.82));
+    fill(color(0, 0, 0));
     noStroke();
     ellipse(nodePos.x, nodePos.y, 8);
   }
@@ -66,10 +77,29 @@ class Nodes {
   drawWeb(index) {
     const nodePos = this.pos[index];
     const closestNodes = this.distTo[index];
-    stroke(208.7, 92.93, 38.82);
+    if (closestNodes.length < 2) return;
 
-    for (let i = 0; i < 5 && i < closestNodes.length; i++) {
+    const p1 = closestNodes[0].pos;
+    const p2 = closestNodes[1].pos;
+
+    const p3 = closestNodes[2].pos
+    const p4 = closestNodes[3].pos
+
+    const heightNumber = map(p1.y, 0, height, 0, 1);
+    const triangleColor = lerpColor(c1, c2, heightNumber);
+
+    fill(triangleColor);
+    noStroke(); 
+    triangle(nodePos.x, nodePos.y, p1.x, p1.y, p2.x, p2.y);
+    
+    fill(triangleColor);
+    noStroke(); 
+    triangle(nodePos.x, nodePos.y, p3.x, p3.y, p4.x, p4.y)
+
+    for (let i = 0; i < 2 && i < closestNodes.length; i++) {
       const neighborPos = closestNodes[i].pos;
+      fill(triangleColor);
+      strokeWeight(2);
       line(nodePos.x, nodePos.y, neighborPos.x, neighborPos.y);
     }
   }
