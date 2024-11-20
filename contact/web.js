@@ -9,8 +9,8 @@ function setup() {
   canvas.style('z-index', '-1');
   frameRate(60);
 
-  c1 = color(245, 77, 59);
-  c2 = color(184, 27, 186);
+  c1 = color(0, 0, 13);
+  c2 = color(0, 35, 51);
 
   maxNodes = width/25
   nodes = new Nodes()

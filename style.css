@@ -28,7 +28,7 @@ main {
     top: 95%;
     left: 95%;
     transform: translate(-100%, -50%);
-    font-size: 100%;
+    font-size: 1.3rem;
     text-align: center;
     color: white;
     z-index: 1;
@@ -43,7 +43,7 @@ main {
     top: 95%;
     left: 5%;
     transform: translate(0, -50%);
-    font-size: 100%;
+    font-size: 1.3rem;
     text-align: center;
     color: white;
     z-index: 1;
